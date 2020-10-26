@@ -9,9 +9,9 @@ module.exports = (req,res,next) => {
         if(req.body.sauce.userId!==userId) {
             next();
         } else {
-            res.status(403).json({error: 'Vous n\'êtes pas autorisé à liker ou disliker votre sauce!'});
+            res.status(403).json({error: 'Vous n\'êtes pas autorisé à liker ou disliker votre sauce !'});
         }
     } catch {
-        res.status(400).json({error: new Error('Invalid request!')});
+        res.status(400).json({error: new Error('Requete Invalide!')});
     }
 }
