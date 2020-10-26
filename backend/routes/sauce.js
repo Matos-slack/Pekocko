@@ -1,4 +1,4 @@
-  
+ 
 const express = require('express');
 const router = express.Router();
 const sauceCtrl = require('../controllers/sauce');
@@ -10,7 +10,6 @@ const getOldPicture = require('../middlewares/PictureAfterUpdate');
 const checkLike = require('../middlewares/checkUserLike');        // Disable option to prevent liking or disliking our own sauces
 const checkCreateForm = require('../middlewares/checkCreateSauce');
 const deletePictureNoValidForm = require('../middlewares/deleteInvalidPicture');
-
 
 router.post('/', auth, multer, checkCreateForm, sauceCtrl.createSauce, deletePictureNoValidForm);
 router.get('/', auth, sauceCtrl.getAllSauces);
