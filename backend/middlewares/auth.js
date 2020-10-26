@@ -1,6 +1,5 @@
 const jwt = require('jsonwebtoken');
 
-
 // Verifie le Token envoyé par le front, token valable ? userId = req.user_id ?
 module.exports = (req, res, next) => {
   try {
