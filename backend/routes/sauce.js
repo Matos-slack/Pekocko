@@ -11,10 +11,11 @@ const checkLike = require('../middlewares/checkUserLike');        // Disable opt
 const checkCreateForm = require('../middlewares/checkCreateSauce');
 const deletePictureNoValidForm = require('../middlewares/deleteInvalidPicture');
 
+
 router.post('/', auth, multer, checkCreateForm, sauceCtrl.createSauce, deletePictureNoValidForm);
 router.get('/', auth, sauceCtrl.getAllSauces);
 router.get('/:id', auth, sauceCtrl.getOneSauce);
-router.post('/:id/like', auth, likingAlgo, checkLike, sauceCtrl.likeOneSauce);
+router.post('/:id/like', auth, likingAlgo, sauceCtrl.likeOneSauce);  // Add checkLike to prevent liking or disliking
 router.put('/:id', auth, multer, getOldPicture, checkCreateForm, sauceCtrl.modifyOneSauce, deletePictureNoValidForm);
 router.delete('/:id', auth, sauceCtrl.deleteSauce);
 

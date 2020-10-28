@@ -1,5 +1,6 @@
 const Sauce = require('../models/Sauce');
 
+// Fonction système de Like / Dislike
 module.exports = (req,res,next) => {
     let message = "";
     Sauce.findOne({ _id: req.params.id })

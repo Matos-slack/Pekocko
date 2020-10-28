@@ -1,5 +1,6 @@
 var fs = require('fs');
 
+// Fonction sécurité pr image téléchargé par utilisateur
 module.exports = (req,res,next) => {
     if(!req.body.errorMessage) {
         if(req.body.oldPictureName) {

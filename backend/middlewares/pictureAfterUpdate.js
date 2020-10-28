@@ -1,5 +1,6 @@
 const Sauce = require('../models/Sauce');
 
+// Renoiv la nouvelle image aprés modification
 module.exports = (req,res,next) => {
     Sauce.findOne({ _id: req.params.id })
     .then(sauce => {
