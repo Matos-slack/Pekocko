@@ -8,10 +8,11 @@ const path = require('path');
 const morgan = require('morgan');
 const winston = require('./monitoring/config/winston');
 const helmet = require('helmet');
+require('dotenv').config();
+const mdp = process.env.mdpMongoDb;
 
-//Middleware
 
-mongoose.connect('mongodb+srv://users:tzSRWphN528Bq7i@cluster0.ogwtm.mongodb.net/Cluster0?retryWrites=true&w=majority',
+mongoose.connect(`mongodb+srv://users:${mdp}@cluster0.ogwtm.mongodb.net/Cluster0?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
   .then(() => console.log('Connexion à MongoDB réussie !'))
@@ -21,6 +22,7 @@ mongoose.connect('mongodb+srv://users:tzSRWphN528Bq7i@cluster0.ogwtm.mongodb.net
 app.use(morgan('combined', { stream: winston.stream }));
 app.use(helmet());
 app.use(bodyParser.json());
+
 
 
 app.use((req, res, next) => {
