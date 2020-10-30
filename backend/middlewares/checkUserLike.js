@@ -1,12 +1,11 @@
-
-
 const jsonWebToken = require('jsonwebtoken');
-
+require('dotenv').config();
+const cleTok = process.env.cleToken;
 
 module.exports = (req,res,next) => {
     try { 
         const token = req.headers.authorization.split(" ")[1];
-        const decodedToken = jsonWebToken.verify(token,'Tho7KYoLPa10DeUx70pO_rF9DYvc72O0J');
+        const decodedToken = jsonWebToken.verify(token,`${cleTok}`);
         const userId = decodedToken.userId;
         if(req.body.sauce.userId!==userId) {
             next();
