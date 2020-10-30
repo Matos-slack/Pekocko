@@ -11,7 +11,7 @@ const helmet = require('helmet');
 require('dotenv').config();
 const mdp = process.env.mdpMongoDb;
 
-
+// Connection à la BDD
 mongoose.connect(`mongodb+srv://users:${mdp}@cluster0.ogwtm.mongodb.net/Cluster0?retryWrites=true&w=majority`,
   { useNewUrlParser: true,
     useUnifiedTopology: true })
