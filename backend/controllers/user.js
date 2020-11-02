@@ -1,6 +1,8 @@
 const bcrypt = require('bcrypt');
 const jsonWebToken = require('jsonwebtoken');
 const User = require('../models/User');
+require('dotenv').config();
+const cleTok = process.env.cleToken;
 
 
 // Hash le mdp, crée un nouveau user avec le nouveau mdp crypté et le mail, puis enrigistre dans la BDD
@@ -33,7 +35,7 @@ exports.login = (req,res,next) => {
                 userId: user._id,
                 token: jsonWebToken.sign(
                     { userId: user._id },
-                    'Tho7KYoLPa10DeUx70pO_rF9DYvc72O0J',
+                    `${cleTok}`,
                     { expiresIn: '1h' }
                 )
             });
